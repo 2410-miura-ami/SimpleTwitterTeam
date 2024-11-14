@@ -16,6 +16,7 @@ import chapter6.exception.SQLRuntimeException;
 
 public class UserMessageDao {
 
+	//変更
 	public List<UserMessage> select(Connection connection, Integer userId, String start, String end, String searchWord, String likeSearch, int num) {
 		PreparedStatement ps = null;
 		try {
@@ -26,7 +27,8 @@ public class UserMessageDao {
 			sql.append(" messages.user_id as user_id, ");
 			sql.append(" users.account as account, ");
 			sql.append(" users.name as name, ");
-			sql.append(" messages.created_date as created_date ");  sql.append("FROM messages ");
+			sql.append(" messages.created_date as created_date ");
+			sql.append("FROM messages ");
 			sql.append("INNER JOIN users ");
 			sql.append("ON messages.user_id = users.id ");
 			sql.append("WHERE messages.created_date BETWEEN ? AND ? ");
@@ -40,6 +42,7 @@ public class UserMessageDao {
 			}
 
 			sql.append("ORDER BY created_date DESC limit " + num);
+
 			ps = connection.prepareStatement(sql.toString());
 			ps.setString(1, start);
 			ps.setString(2, end);
@@ -56,6 +59,21 @@ public class UserMessageDao {
 				}
 			}
 
+			ps = connection.prepareStatement(sql.toString());
+			ps.setString(1, start);
+			ps.setString(2, end);
+
+			if(userId != null) {
+				ps.setInt(3, userId);
+
+				if (!StringUtils.isBlank(searchWord)) {
+					ps.setString(4, searchWord + "%");
+				}
+			} else {
+				if (!StringUtils.isBlank(searchWord)) {
+					ps.setString(3, searchWord + "%");
+				}
+			}
             ResultSet rs = ps.executeQuery();
 
             List<UserMessage> messages = toUserMessages(rs);

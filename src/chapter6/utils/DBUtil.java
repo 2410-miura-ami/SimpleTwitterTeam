@@ -14,7 +14,11 @@ public class DBUtil {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost/simple_twitter";
     private static final String USER = "root";
+<<<<<<< HEAD
     private static final String PASSWORD = "miuraami1010";
+=======
+    private static final String PASSWORD = "Nozomu@@1933";
+>>>>>>> 02bb6ead58900eda7ad526c52db6c2418e2f6fb8
 
     static {
 

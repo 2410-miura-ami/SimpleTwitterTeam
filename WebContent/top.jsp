@@ -56,6 +56,8 @@
 				つぶやき：
 				<input type = "text" name ="word" value = "${searchWord}"/>
 				<input type="radio" name="radiobutton" value="contain" checked="checked">
+				から始まる
+				<input type= "submit" value = "検索">
 				を含む
 				<input type= "submit" value = "検索">
 			</form>
