@@ -46,6 +46,10 @@ public class TopServlet extends HttpServlet {
         request.setAttribute("messages", messages);
         request.setAttribute("comments", comments);
         request.setAttribute("isShowMessageForm", isShowMessageForm);
+
+        //変更
+        request.setAttribute("searchWord", request.getParameter("word"));
+
         request.getRequestDispatcher("/top.jsp").forward(request, response);
     }
 }
