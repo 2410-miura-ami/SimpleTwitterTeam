@@ -50,6 +50,15 @@
 			<input type="submit" value="絞り込み">
 		</form>
 		<br />
+		<div class = "search">
+			<form action = "./" action = "get">
+			つぶやき：
+				<input type = "text" name ="word" value = "${searchWord}"/>
+				<input type="radio" name="radiobutton" value="same" checked="checked">
+			完全⼀致
+				<input type= "submit" value = "検索">
+			</form>
+		</div>
 		<div class="form-area">
 		    <c:if test="${ isShowMessageForm }">
 		        <form action="message" method="post">
