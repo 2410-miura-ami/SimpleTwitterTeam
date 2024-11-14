@@ -42,6 +42,7 @@ public class UserMessageDao {
 			}
 
 			sql.append("ORDER BY created_date DESC limit " + num);
+
 			ps = connection.prepareStatement(sql.toString());
 			ps.setString(1, start);
 			ps.setString(2, end);
@@ -50,7 +51,7 @@ public class UserMessageDao {
 				ps.setInt(3, userId);
 
 				if (!StringUtils.isBlank(searchWord)) {
-					ps.setString(4, searchWord);
+					ps.setString(4, searchWord + "%");
 				}
 			} else {
 				if (!StringUtils.isBlank(searchWord)) {

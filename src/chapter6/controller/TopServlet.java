@@ -40,6 +40,7 @@ public class TopServlet extends HttpServlet {
         //返信コメントを表示する
         List<UserComment> comments = new CommentService().select();
 
+        request.setAttribute("searchWord", request.getParameter("word"));
         request.setAttribute("start", start);
         request.setAttribute("end", end);
         request.setAttribute("searchWord", request.getParameter("word"));
